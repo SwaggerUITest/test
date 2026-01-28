@@ -60,6 +60,7 @@ tags:
       
       <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px;">
         <strong style="color: #856404;">⚠️ Additional Verification Required</strong>
+        <input>hello</input>
         <p style="color: #856404; margin: 8px 0 0 0;">
           If you recently changed your password, you must also verify your identity using the form above before accessing API documentation.
         </p>
